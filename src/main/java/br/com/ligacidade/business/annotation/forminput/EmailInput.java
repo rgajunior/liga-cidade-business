@@ -1,4 +1,4 @@
-package br.com.ligacidade.annotation.forminput;
+package br.com.ligacidade.business.annotation.forminput;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
