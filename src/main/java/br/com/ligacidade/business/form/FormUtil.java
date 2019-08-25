@@ -8,7 +8,7 @@ import java.util.HashMap;
 public class FormUtil {
    private static HashMap<String, FormMetadata> hmap = new HashMap<String, FormMetadata>();
 
-   private static final String pack = "br.com.ligacidade.model.";
+   private static final String pack = "br.com.ligacidade.business.model.";
 
    public static FormMetadata build(String entity) throws Exception {
       FormMetadata fmd = hmap.get(entity);
@@ -21,6 +21,9 @@ public class FormUtil {
 
       for (Field field : clazz.getDeclaredFields()) {
          Annotation a = getInputAnnotation(field);
+         if (a == null)
+            continue;
+
          Class<?> aClazz = a.getClass();
 
          if (a != null) {
@@ -36,7 +39,7 @@ public class FormUtil {
       }
 
       hmap.put(entity, fmd);
-      
+
       return fmd;
    }
 
@@ -44,7 +47,8 @@ public class FormUtil {
       try {
          return method.invoke(a);
       } catch (Exception e) {
-         System.out.println(e.getMessage());
+         if (!"equals".contains(method.getName()))
+            System.out.println(e.getMessage());
       }
 
       return null;
@@ -52,7 +56,7 @@ public class FormUtil {
 
    private static Annotation getInputAnnotation(Field field) {
       for (Annotation a : field.getAnnotations()) {
-         if (a.annotationType().getName().contains("br.com.ligacidade.annotation.forminput"))
+         if (a.annotationType().getName().contains("br.com.ligacidade.business.annotation.forminput"))
             return a;
       }
 

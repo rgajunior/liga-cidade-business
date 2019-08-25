@@ -11,7 +11,9 @@ public @interface PasswordInput {
    String pattern() default "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\\s).*$";
    boolean required() default true;
    String label() default "Senha";
-   String roles() default "";
+   String wrole() default "";
+   String rrole() default "";
    boolean confirm() default true;
    String type() default "password";
+   
 }

@@ -11,7 +11,8 @@ public @interface EmailInput{
    String pattern() default "";   
    boolean required() default true;
    String label() default "Email";
-   String roles() default "";
+   String wrole() default "";
+   String rrole() default "";
    boolean confirm() default true;
    String type() default "email";
 }

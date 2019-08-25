@@ -6,12 +6,12 @@ import br.com.ligacidade.business.annotation.forminput.PasswordInput;
 import lombok.Data;
 
 @Data
-public class User extends GenericEntity {
+public class User {
 
    @FormInput()
    private String id;
 
-   @FormInput()
+   @FormInput(label = "Nome")
    private String name;
 
    @EmailInput()
